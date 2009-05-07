@@ -53,12 +53,23 @@ function human(date) {
 	return sprintf('%d/%d/%d', date.day, date.month, date.year);
 }
 
+function are_the_same(obj1, obj2) {
+	same = true;
+	for (p in obj1) {
+		if (obj1.p != obj2.p) {
+			same = false;
+			break;
+		}
+	}
+	return same;
+}
+
 function day_of_week_from_2_days_in_same_month() {
 	var year = random_number_between(RANGE.from, RANGE.to);
 	var month = random_number_between(1, 12);
 	var date1 = random_date({year: year, month: month});
 	var date2 = random_date({year: year, month: month});
-	while (date2 == date1) date2 = random_date({year: year, month: month});
+	while (are_the_same(date1, date2)) date2 = random_date({year: year, month: month});
 	return {
 		question: sprintf('Nếu ngày %s là %s thì ngày %s là thứ mấy?', human(date1), human_day_of_week(date1), human(date2)),
 		answer: day_of_week(date2)
