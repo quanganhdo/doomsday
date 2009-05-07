@@ -106,7 +106,7 @@ function termInitHandler() {
 function termHandler() {
 	var line = this.lineBuffer;
 	this.newLine();
-	if ((line == 'exit' || line == 'quit' == line == 'q') && !in_lesson) {
+	if ((line == 'exit' || line == 'quit' || line == 'q') && !in_lesson) {
 		this.close();
 		$('terminal').style.display = 'none';
 		return;
