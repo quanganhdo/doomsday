@@ -28,6 +28,11 @@ var LESSON_MATERIALS = [{
 	qa: day_of_week_from_date_in_any_months,
 	tip: '3(4)/1, 0(7)/3, 5/9, 9/5, 7/11, 11/7, 28(29)/2, 4/4',
 	score_to_pass: 10
+}, {
+	content: sprintf('%+rBÀI 5%-r%n%nẮt hẳn sau 4 bài học vừa qua, bạn rút ra kết luận: Biết thứ trong tuần của %+iNgày tận thế%-i trong một năm sẽ giúp ta nhẩm được thứ của một ngày bất kỳ trong năm đó. %+iNgày tận thế%-i năm nay là %s, còn các năm khác thì sao?%n%nXét đến thế kỷ 20 với mốc là năm 1900 - %+iNgày tận thế%-i là thứ tư. Để biết %+iNgày tận thế%-i của các năm 19YY khác (ví dụ 1929) rơi vào hôm nào, bạn làm như sau:%n%n- Xét số tạo bởi 2 chữ số cuối của năm (29)%n- Đem số đó chia 12, lấy thương (29/12=2) và số dư (5)%n- Đem số dư chia 4, lấy thương (5/4=1)%n- Cộng tất cả lại (2+5+1=8)%n- Bỏ bội của 7 khỏi kết quả(8-7=1)%n- Cuối cùng đem kết quả cộng với 4 (tương ứng với thứ tư) => Đáp áp là thứ năm%n%nỞ đây coi 2 - thứ hai, 3 - thứ 3,... 1 - chủ nhật.%n%nRắc rối nhỉ? Thử xem nhé. %d điểm và bạn qua được bài này.%n%n', human_day_of_week(current_doomsday), score_to_pass),
+	qa: doomsday_from_any_years,
+	tip: '',
+	score_to_pass: 7
 }];
 
 function $(id) {

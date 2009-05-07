@@ -121,3 +121,13 @@ function day_of_week_from_date_in_any_months() {
 		answer: day_of_week(date)
 	};
 }
+
+function doomsday_from_any_years() {
+	var year = random_number_between(1901, 1999);
+	var dday = doomsday(year);
+	
+	return {
+		question: sprintf('%+iNgày tận thế%-i năm %s là thứ mấy?', year),
+		answer: day_of_week({day: dday, month: 2, year: year})
+	};
+}
