@@ -91,7 +91,7 @@ function termHandler() {
 	if (line == 'help') {
 		this.write('Lorem ipsum dolor sit amet');
 		this.prompt();
-	} else if ((line == 'exit' || line == 'quit') && !in_lesson) {
+	} else if ((line == 'exit' || line == 'quit' == line == 'q') && !in_lesson) {
 		this.close();
 		return;
 	} else if (line == 'clear') {
@@ -129,7 +129,7 @@ function startLesson(no) {
 	score_to_pass = LESSON_MATERIALS[current_lesson].score_to_pass || 7;
 	
 	term.write(LESSON_MATERIALS[current_lesson].content);
-	term.statusLine('Bạn có thể gõ "quit" để thoát khỏi bài học bất kỳ lúc nào.');
+	term.statusLine('Gõ "quit" - thoát khỏi bài học, "lesson" - xem lại bài học');
 	
 	nextQuestion();
 }
@@ -149,9 +149,13 @@ function nextQuestion() {
 }
 
 function check_answer(line) {
-	if (line == 'quit' || line == 'q') {
+	if (line == 'quit' || line == 'q' || line == 'exit') {
 		back_to_main();
 		return;
+	} else if (line == 'lesson') {
+		term.clear();
+		term.write(LESSON_MATERIALS[current_lesson].content);
+		return nextQuestion();
 	}
 	
 	answer = parseInt(line, 10);
