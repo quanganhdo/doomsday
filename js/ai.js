@@ -122,7 +122,7 @@ function day_of_week_from_date_in_any_months() {
 	};
 }
 
-function doomsday_from_any_years() {
+function doomsday_from_any_years_in_20th_century() {
 	var year = random_number_between(1901, 1999);
 	var dday = doomsday(year);
 	
@@ -132,7 +132,7 @@ function doomsday_from_any_years() {
 	};
 }
 
-function day_of_week_from_date_in_21th_century() {
+function day_of_week_from_date_in_21st_century() {
 	var year = random_number_between(2001, 2099);
 	var month = random_number_between(1, 12);
 	var date = random_date({year: year, month: month});
@@ -140,5 +140,15 @@ function day_of_week_from_date_in_21th_century() {
 	return {
 		question: sprintf('Ngày %s là thứ mấy?', human(date)),
 		answer: day_of_week(date)
+	};
+}
+
+function doomsday_from_any_years() {
+	var year = random_number_between(RANGE.from, RANGE.to);
+	var dday = doomsday(year);
+	
+	return {
+		question: sprintf('%+iNgày tận thế%-i năm %s là thứ mấy?', year),
+		answer: day_of_week({day: dday, month: 2, year: year})
 	};
 }
