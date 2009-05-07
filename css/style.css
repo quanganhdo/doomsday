@@ -1,0 +1,61 @@
+/* generic */
+body,p,a,td {
+	font-family: courier, sans-serif;
+	font-size: 14px;
+	color: #cccccc;
+}
+body {
+	background:#222222;
+}
+.lh15 {
+	line-height: 15px;
+}
+a,a:link,a:visited {
+	text-decoration: none;
+	color: #77dd11;
+}
+a:hover {
+	text-decoration: underline;
+	color: #77dd11;
+}
+a:active {
+	text-decoration: underline;
+	color: #dddddd;
+}
+
+/* term */
+#terminal {
+	position: absolute;
+	left: 100px;
+	top: 100px;
+}
+.term {
+	font-family: courier, sans-serif;
+	font-size: 12px;
+	color: #3B2221;
+	background: #DEDAC5;
+}
+.termReverse {
+	color: #DEDAC5;
+	background: #3B2221;
+}
+.termChrome {
+	background: #A2A2A2;
+	padding: 0px;
+	border: 0;
+}
+.termBody {
+	background: #DEDAC5;
+	padding: 0px;
+	border: 1px;
+}
+.termHeader {
+	font-family: helvetica,arial,sans-serif;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: #000000;
+	background: #B7B7B7;
+	text-align: center;
+	height: 22px;
+	border-bottom: 1px solid #404040;
+}

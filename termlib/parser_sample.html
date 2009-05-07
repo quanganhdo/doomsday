@@ -1,0 +1,295 @@
+<html>
+<head>
+	<title>termlib Sample Parser</title>
+	<script language="JavaScript" type="text/javascript" src="termlib.js"></script>
+	<script language="JavaScript" type="text/javascript" src="termlib_parser.js"></script>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+
+/*
+  test sample for termlib.js and termlib_parser.js
+
+  (c) Norbert Landsteiner 2005
+  mass:werk - media environments
+  <http://www.masswerk.at>
+
+*/
+
+var term;
+
+var helpPage=[
+	'%CS%+r Terminal Help %-r%n',
+	'  This is just a sample to demonstrate command line parsing.',
+	' ',
+	'  Use one of the following commands:',
+	'     clear [-a] .......... clear the terminal',
+	'                           option "a" also removes the status line',
+	'     number -n<value> .... return value of option "n" (test for options)',
+	'     repeat -n<value> .... repeats the first argument n times (another test)',
+	'     login <username> .... sample login (test for raw mode)',
+	'     exit ................ close the terminal (same as <ESC>)',
+	'     help ................ show this help page',
+	' ',
+	'  other input will be echoed to the terminal as a list of parsed arguments',
+	'  in the format <argument index> <quoting level> "<parsed value>".',
+	' '
+];
+
+function termOpen() {
+	if (!term) {
+		term=new Terminal(
+			{
+				x: 220,
+				y: 70,
+				termDiv: 'termDiv',
+				ps: '[guest]$',
+				initHandler: termInitHandler,
+				handler: commandHandler
+			}
+		);
+		if (term) term.open();
+	}
+	else if (term.closed) {
+		term.open();
+	}
+	else {
+		term.focus();
+	}
+}
+
+function termInitHandler() {
+	// output a start up screen
+	this.write(
+		[
+			this.globals.center('####################################################', 80),
+			this.globals.center('#                                                  #', 80),
+			this.globals.center('#           termlib.js - Sample Parser             #', 80),
+			this.globals.center('#  Input is echoed as a list of parsed arguments.  #', 80),
+			this.globals.center('#                                                  #', 80),
+			this.globals.center('#  Type "help" for commands.                       #', 80),
+			this.globals.center('#                                                  #', 80),
+			this.globals.center('#  (c) N. Landsteiner 2005;  www.masswerk.at       #', 80),
+			this.globals.center('#                                                  #', 80),
+			this.globals.center('####################################################', 80),
+			'%n'
+		]
+	);
+	// set a double status line
+	this.statusLine('', 8,2); // just a line of strike
+	this.statusLine(' +++ This is just a test sample for command parsing. Type "help" for help. +++');
+	this.maxLines -= 2;
+	// and leave with prompt
+	this.prompt();
+}
+
+function commandHandler() {
+	this.newLine();
+	// check for raw mode first (should not be parsed)
+	if (this.rawMode) {
+		if (this.env.getPassword) {
+			// sample password handler (lineBuffer == stored username ?)
+			if (this.lineBuffer == this.env.username) {
+				this.user = this.env.username;
+				this.ps = '['+this.user+']>';
+			}
+			else {
+				this.type('Sorry.');
+			}
+			this.env.username = '';
+			this.env.getPassword = false;
+		}
+		// leave in normal mode
+		this.rawMode = false;
+		this.prompt();
+		return;
+	}
+	// normal command parsing
+	// just call the termlib_parser with a reference of the calling Terminal instance
+	// parsed arguments will be imported in this.argv,
+	// quoting levels per argument in this.argQL (quoting character or empty)
+	// cursor for arguments is this.argc (used by parserGetopt)
+	// => see 'termlib_parse.js' for configuration and details
+	parseLine(this);
+	if (this.argv.length == 0) {
+		// no commmand line input
+	}
+	else if (this.argQL[0]) {
+	    // first argument quoted -> error
+		this.write("Syntax error: first argument quoted.");
+	}
+	else {
+		var cmd = this.argv[this.argc++];
+		/*
+		  process commands now
+		  1st argument: this.argv[this.argc]
+		*/
+		if (cmd == 'help') {
+			this.write(helpPage);
+		}
+		else if (cmd == 'clear') {
+			// get options
+			var opts = parserGetopt(this, 'aA');
+			if (opts.a) {
+				// discard status line on opt "a" or "A"
+				this.maxLines = this.conf.rows;
+			}
+			this.clear();
+		}
+		else if (cmd == 'number') {
+			// test for value options
+			var opts = parserGetopt(this, 'n');
+			if (opts.illegals.length) this.type('illegal option. usage: number -n<value>')
+			else if ((opts.n) && (opts.n.value != -1)) this.type('option value: '+opts.n.value)
+			else this.type('usage: number -n<value>');
+		}
+		else if (cmd == 'repeat') {
+			// another test for value options
+			var opts = parserGetopt(this, 'n');
+			if (opts.illegals.length) this.type('illegal option. usage: repeat -n<value> <string>')
+			else if ((opts.n) && (opts.n.value != -1)) {
+				// first normal argument is again this.argv[this.argc]
+				var s = this.argv[this.argc];
+				if (typeof s != 'undefined') {
+					// repeat this string n times
+					var a = [];
+					for (var i=0; i<opts.n.value; i++) a[a.length] = s;
+					this.type(a.join(' '));
+				}
+			}
+			else this.type('usage: repeat -n<value> <string>');
+		}
+		else if (cmd == 'login') {
+			// sample login (test for raw mode)
+			if ((this.argc == this.argv.length) || (this.argv[this.argc] == '')) {
+				this.type('usage: login <username>');
+			}
+			else {
+				this.env.getPassword = true;
+				this.env.username = this.argv[this.argc];
+				this.write('%+iSample login: repeat username as password.%-i%n');
+				this.type('password: ');
+				// exit in raw mode (blind input)
+				this.rawMode = true;
+				this.lock = false;
+				return;
+			}
+		}
+		else if (cmd == 'exit') {
+			this.close();
+			return;
+		}
+		else {
+			// for test purpose just output argv as list
+			// assemble a string of style-escaped lines and output it in more-mode
+			s=' INDEX  QL  ARGUMENT%n';
+			for (var i=0; i<this.argv.length; i++) {
+				s += this.globals.stringReplace('%', '%%',
+						this.globals.fillLeft(i, 6) +
+						this.globals.fillLeft((this.argQL[i])? this.argQL[i]:'-', 4) +
+						'  "' + this.argv[i] + '"'
+					) + '%n';
+			}
+			this.write(s, 1);
+			return;
+		}
+	}
+	this.prompt();
+}
+
+
+//-->
+</script>
+
+<style type="text/css">
+body,p,a,td {
+	font-family: courier,fixed,swiss,sans-serif;
+	font-size: 12px;
+	color: #cccccc;
+}
+.lh15 {
+	line-height: 15px;
+}
+.term {
+	font-family: courier,fixed,swiss,sans-serif;
+	font-size: 12px;
+	color: #33d011;
+	background: none;
+}
+.termReverse {
+	color: #111111;
+	background: #33d011;
+}
+a,a:link,a:visited {
+	text-decoration: none;
+	color: #77dd11;
+}
+a:hover {
+	text-decoration: underline;
+	color: #77dd11;
+}
+a:active {
+	text-decoration: underline;
+	color: #dddddd;
+}
+
+a.termopen,a.termopen:link,a.termopen:visited {
+	text-decoration: none;
+	color: #77dd11;
+	background: none;
+}
+a.termopen:hover {
+	text-decoration: none;
+	color: #222222;
+	background: #77dd11;
+}
+a.termopen:active {
+	text-decoration: none;
+	color: #222222;
+	background: #dddddd;
+}
+
+</style>
+</head>
+
+
+<body bgcolor="#222222" link="#77dd11" text="#cccccc" alink="#dddddd" vlink="#77dd11"
+topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
+
+<table border="0" cellspacing="20" cellpadding="0" align="center">
+<tr>
+	<td nowrap><a href="index.html">termlib.js home</a></td>
+	<td>|</td>
+	<td nowrap><a href="multiterm_test.html">multiple terminals</a></td>
+	<td>|</td>
+	<td nowrap>parser</td>
+	<td>|</td>
+	<td nowrap><a href="faq.html">faq</a></td>
+	<td>|</td>
+	<td nowrap><a href="readme.txt" title="readme.txt (text/plain)">documentation</a></td>
+	<td>|</td>
+	<td nowrap><a href="samples.html">samples</a></td>
+</tr>
+</table>
+
+<table border="0" cellspacing="20" cellpadding="0">
+	<tr><td nowrap>
+		Sample Parser Test<br>&nbsp;
+	</td></tr>
+	<tr><td nowrap>
+		<a href="javascript:termOpen()" onfocus="if(this.blur)this.blur();" onmouseover="window.status='terminal 1'; return true" onmouseout="window.status=''; return true" class="termopen">&gt; open terminal &nbsp;</a>
+	</td></tr>
+	<tr><td nowrap>
+		&nbsp;
+	</td></tr>
+	<tr><td nowrap class="lh15">
+		&nbsp;<br>
+		(c) mass:werk,<br>N. Landsteiner 2003-2005<br>
+		<a href="http://www.masswerk.at/" target="_blank">http://www.masswerk.at</a>
+	</td></tr>
+</table>
+
+<div id="termDiv" style="position:absolute;"></div>
+
+</body>
+</html>
