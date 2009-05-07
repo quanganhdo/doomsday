@@ -132,7 +132,10 @@ function check_answer(line) {
 	answer = (answer == 0) ? 8 : answer;
 	
 	if (answer == expected_answer) {
+		term.write('Chính xác.%n%n');
 		score++;
+	} else {
+		term.write(sprintf('Sai. Đáp án là %s.%n%n', human_number(expected_answer)));
 	}
 	term.statusLine(sprintf('Điểm: %d/%d - %s', score, score_to_pass, LESSON_MATERIALS[current_lesson].tip));
 	

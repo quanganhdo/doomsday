@@ -20,7 +20,11 @@ function day_of_week(date) {
 
 function human_day_of_week(date) {
 	var dow = day_of_week(date);
-	return DAY[dow - 2];
+	return human_number(dow);
+}
+
+function human_number(number) {
+	return DAY[number - 2];
 }
 
 function leap_year(year) {
@@ -88,7 +92,7 @@ function day_of_week_from_date_in_even_months() {
 	var date = random_date({year: year, month: month});
 	
 	return {
-		question: sprintf('Biết %s là %s. Ngày %s là thứ mấy?', human({day: dday, month: 2, year: year}), human_day_of_week({day: dday, month: 2, year: year}), human(date)),
+		question: sprintf('Biết %s là %s, ngày %s là thứ mấy?', human({day: dday, month: 2, year: year}), human_day_of_week({day: dday, month: 2, year: year}), human(date)),
 		answer: day_of_week(date)
 	};
 }
