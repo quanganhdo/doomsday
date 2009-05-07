@@ -141,7 +141,7 @@ function show_page(name) {
 			term.write('%+rGiới thiệu%-r%n%nĐã bao nhiêu lần bạn đặt câu hỏi: Ngày mm/dd/yyyy là thứ mấy? Chắc chắn không dưới 10 lần, thậm chí là 100 lần. Vậy bạn có muốn tự mình trả lời câu hỏi quen thuộc đó bằng cách tính nhẩm, thay vì sử dụng máy tính/điện thoại/lịch? Cách tính nghe qua có vẻ phức tạp, nhưng khi đã quen bạn sẽ thấy rất dễ dàng.%n%nCác bài học, cũng như bài tập, được trình bày trong giao diện dòng lệnh này. Bạn có thể gõ "help" để xem danh sách các lệnh.%n%n');
 			break;
 		case 'help':
-			term.write(sprintf('%+rDanh sách lệnh%-r%n%n- help: Hiển thị màn hình này%n- quit: Thoát khỏi terminal%n- clear: Xóa màn hình%n- intro: Giới thiệu%n- lesson <n>: Bắt đầu bài học <n> (n từ 1 - %d)%n- list: Danh sách các bài học%n- about: Về trang web này%n%n', LESSON_MATERIALS.length - 1));
+			term.write(sprintf('%+rDanh sách lệnh%-r%n%n- help: Hiển thị màn hình này%n- quit: Thoát khỏi terminal%n- clear: Xóa màn hình%n- intro: Giới thiệu%n- lesson <n>: Bắt đầu bài học <n> (n từ 1 - %d)%n- list: Danh sách các bài học%n- about: Về trang web này%n%nNếu bạn muốn bắt đầu học từ đầu, gõ lệnh "lesson 1"%n', LESSON_MATERIALS.length - 1));
 			break;
 		case 'list':
 			var out = '%+rDanh sách bài học%-r%n%n';
