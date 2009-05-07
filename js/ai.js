@@ -20,7 +20,7 @@ function day_of_week(date) {
 
 function human_day_of_week(date) {
 	var dow = day_of_week(date);
-	return DAY[dow] - 2;
+	return DAY[dow - 2];
 }
 
 function leap_year(year) {
@@ -58,6 +58,7 @@ function day_of_week_from_2_days_in_same_month() {
 	var month = random_number_between(1, 12);
 	var date1 = random_date({year: year, month: month});
 	var date2 = random_date({year: year, month: month});
+	while (date2 == date1) date2 = random_date({year: year, month: month});
 	return {
 		question: sprintf('Nếu ngày %s là %s thì ngày %s là thứ mấy?', human(date1), human_day_of_week(date1), human(date2)),
 		answer: day_of_week(date2)
