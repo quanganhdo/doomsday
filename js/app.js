@@ -16,6 +16,10 @@ var LESSON_MATERIALS = [{
 	content: sprintf('%+rBÀI 2%-r%n%nĐiều đầu tiên bạn phải nhớ trong bài học này là: Trong một năm, ngày chúng ta quan tâm nhất là ngày cuối cùng của tháng 2 - %+iNgày tận thế (Doomsday)%-i. Với năm thường, đó là ngày 28; năm nhuận - ngày 29.%n%nLấy ví dụ, năm nay (%d) tháng 2 có %d ngày. Ngày cuối cùng của tháng là %s. Từ đó, bạn tính được thứ của tất cả các ngày khác trong tháng 2.%n%nĐiều thú vị hơn là, ngày 4/4, 6/6, 8/8, 10/10, 12/12 trong năm nay cũng là %s - trùng với %+iNgày tận thế%-i. Hơn thế, nó đúng với tất cả các năm. Thứ của các ngày 4/4, 6/6, 8/8, 10/10, 12/12 luôn trùng với thứ của %+iNgày tận thế%-i của năm đó.%n%nGiờ bạn hãy dùng kiến thức vừa học để áp dụng vào việc tìm thứ của các ngày trong tháng chẵn. Bạn cần %d điểm để qua bài 2.%n%n', current_year, current_doomsday, human_day_of_week({day: current_doomsday, month: 2, year: current_year}), human_day_of_week({day: current_doomsday, month: 2, year: current_year}), score_to_pass),
 	qa: day_of_week_from_date_in_even_months,
 	tip: '28(29)/2, 4/4, 6/6, 8/8, 10/10, 12/12 cùng thứ trong tuần'
+}, {
+		content: sprintf('%+rBÀI 3%-r%n%nTrong bài 3, chúng ta sẽ xét đến những tháng lẻ. Coi ngày cuối tháng 2 là ngày "mùng 0" của tháng 3 - ta có %+iNgày tận thế%-i thứ nhất: 7/3.%n%nNhớ %+iNgày tận thế%-i trong những tháng lẻ khác (5, 7, 9, 11) - trừ tháng 1 - cần bạn thuộc "câu thần chú": %+iTôi làm việc từ 9 đến 5 ở 7-11 (I work 9-5 at the 7-11).%-i 9h đến 5h là giờ đi làm ở một số nước, và 7-Eleven là tên một chuỗi cửa hàng có tiếng trên thế giới. Với "câu thần chú" này, bạn biết thêm 4 %+iNgày tận thế%-i: 5/9, 9/5, 7/11, 11/7.%n%nGiờ đến tháng 1. Nếu năm đang xét là năm thường,  %+iNgày tận thế%-i là 3/1, nếu năm nhuận (chia hết cho 4) - 4/1.%n%nKhá rắc rối và khó nhớ, tuy nhiên một khi nắm được bạn sẽ thấy mọi chuyện thật đơn giản. Hãy cố gắng qua bài này với %d điểm.%n%n', score_to_pass),
+		qa: day_of_week_from_date_in_odd_months,
+		tip: '3(4)/1, 0(7)/3, 5/9, 9/5, 7/11, 11/7 cùng thứ trong tuần'
 }];
 
 function $(id) {

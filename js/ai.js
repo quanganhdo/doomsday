@@ -96,3 +96,16 @@ function day_of_week_from_date_in_even_months() {
 		answer: day_of_week(date)
 	};
 }
+
+function day_of_week_from_date_in_odd_months() {
+	var year = random_number_between(RANGE.from, RANGE.to);
+	var month = random_number_between(1, 12);
+	while (month % 2 == 0) month = random_number_between(1, 12);
+	var dday = doomsday(year);
+	var date = random_date({year: year, month: month});
+	
+	return {
+		question: sprintf('Biết %s là %s, ngày %s là thứ mấy?', human({day: dday, month: 2, year: year}), human_day_of_week({day: dday, month: 2, year: year}), human(date)),
+		answer: day_of_week(date)
+	};
+}
