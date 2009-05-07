@@ -7,6 +7,7 @@
 		<script src="js/sprintf.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/ai.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://onetruebrace.com/mint/?js" type="text/javascript" charset="utf-8"></script>
 	
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="main" charset="utf-8" />
 	</head>
