@@ -31,8 +31,13 @@ var LESSON_MATERIALS = [{
 }, {
 	content: sprintf('%+rBÀI 5%-r%n%nẮt hẳn sau 4 bài học vừa qua, bạn rút ra kết luận: Biết thứ trong tuần của %+iNgày tận thế%-i trong một năm sẽ giúp ta nhẩm được thứ của một ngày bất kỳ trong năm đó. %+iNgày tận thế%-i năm nay là %s, còn các năm khác thì sao?%n%nXét đến thế kỷ 20 với mốc là năm 1900 - %+iNgày tận thế%-i là thứ tư. Để biết %+iNgày tận thế%-i của các năm 19YY khác (ví dụ 1929) rơi vào hôm nào, bạn làm như sau:%n%n- Xét số tạo bởi 2 chữ số cuối của năm (29)%n- Đem số đó chia 12, lấy thương (29/12=2) và số dư (5)%n- Đem số dư chia 4, lấy thương (5/4=1)%n- Cộng tất cả lại (2+5+1=8)%n- Bỏ bội của 7 khỏi kết quả(8-7=1)%n- Cuối cùng đem kết quả cộng với 4 (tương ứng với thứ tư) => Đáp áp là thứ năm%n%nỞ đây coi 2 - thứ hai, 3 - thứ 3,... 1 - chủ nhật.%n%nRắc rối nhỉ? Thử xem nhé. %d điểm và bạn qua được bài này.%n%n', human_day_of_week(current_doomsday), score_to_pass),
 	qa: doomsday_from_any_years,
-	tip: '',
+	tip: 'Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4 + 4',
 	score_to_pass: 7
+}, {
+	content: sprintf('%+rBÀI 6%-r%%n%nThêm một bài ôn tập nữa, áp dụng tất cả những gì bạn đã học để tìm thứ trong tuần của một ngày bất kỳ trong thế kỷ 21. Biết %+iNgày tận thế%-i của năm 2000 là thứ 3. Đây là mốc để cộng với kết quả thu được sau phép toán: Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4.%n%nBạn qua bài này với %d điểm.%n%n', 5),
+	qa: day_of_week_from_date_in_21th_century,
+	tip: 'Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4 + 3',
+	score_to_pass: 5
 }];
 
 function $(id) {

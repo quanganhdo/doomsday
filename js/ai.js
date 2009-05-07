@@ -131,3 +131,14 @@ function doomsday_from_any_years() {
 		answer: day_of_week({day: dday, month: 2, year: year})
 	};
 }
+
+function day_of_week_from_date_in_21th_century() {
+	var year = random_number_between(2001, 2099);
+	var month = random_number_between(1, 12);
+	var date = random_date({year: year, month: month});
+	
+	return {
+		question: sprintf('Ngày %s là thứ mấy?', human(date)),
+		answer: day_of_week(date)
+	};
+}
