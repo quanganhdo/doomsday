@@ -109,6 +109,7 @@ function termHandler() {
 	if ((line == 'exit' || line == 'quit' || line == 'q') && !in_lesson) {
 		this.close();
 		$('terminal').style.display = 'none';
+		document.location = 'http://tr.im/doomsday';
 		return;
 	} else if (line == 'clear') {
 		this.clear();
