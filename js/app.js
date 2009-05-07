@@ -98,7 +98,7 @@ function termInitHandler() {
 		]
 	);
 	this.statusLine('', 8, 2);
-	this.statusLine('Gõ "lesson <n>" để học Bài <n>, "list" - xem danh sách bài học.');
+	this.statusLine('Gõ "lesson <n>" để học bài <n>, "list" - xem danh sách bài học.');
 	this.maxLines -= 2;
 	this.prompt();
 }
@@ -108,11 +108,12 @@ function termHandler() {
 	this.newLine();
 	if ((line == 'exit' || line == 'quit' == line == 'q') && !in_lesson) {
 		this.close();
+		$('terminal').style.display = 'none';
 		return;
 	} else if (line == 'clear') {
 		this.clear();
 		this.prompt();
-	} else if (line.match(/^(intro|help|list)$/)) {
+	} else if (line.match(/^(intro|help|list|about)$/)) {
 		show_page(line);
 	} else if (line.match(/^lesson [0-9]+$/)) {
 		var no = line.match(/^lesson ([0-9]+)$/)[1] || 0;
@@ -139,7 +140,7 @@ function show_page(name) {
 			term.write('%+rGiới thiệu%-r%n%nĐã bao nhiêu lần bạn đặt câu hỏi: Ngày mm/dd/yyyy là thứ mấy? Chắc chắn không dưới 10 lần, thậm chí là 100 lần. Vậy bạn có muốn tự mình trả lời câu hỏi quen thuộc đó bằng cách tính nhẩm, thay vì sử dụng máy tính/điện thoại/lịch? Cách tính nghe qua có vẻ phức tạp, nhưng khi đã quen bạn sẽ thấy rất dễ dàng.%n%nCác bài học, cũng như bài tập, được trình bày trong giao diện dòng lệnh này. Bạn có thể gõ "help" để xem danh sách các lệnh.%n%n');
 			break;
 		case 'help':
-			term.write(sprintf('%+rDanh sách lệnh%-r%n%n- help: Hiển thị màn hình này%n- quit: Thoát khỏi terminal%n- clear: Xóa màn hình%n- intro: Giới thiệu%n- lesson <n>: Bắt đầu bài học <n> (n từ 1 - %d)%n- list: Danh sách các bài học%n%n', LESSON_MATERIALS.length - 1));
+			term.write(sprintf('%+rDanh sách lệnh%-r%n%n- help: Hiển thị màn hình này%n- quit: Thoát khỏi terminal%n- clear: Xóa màn hình%n- intro: Giới thiệu%n- lesson <n>: Bắt đầu bài học <n> (n từ 1 - %d)%n- list: Danh sách các bài học%n- about: Về trang web này%n%n', LESSON_MATERIALS.length - 1));
 			break;
 		case 'list':
 			var out = '%+rDanh sách bài học%-r%n%n';
@@ -148,6 +149,9 @@ function show_page(name) {
 			}
 			out += '%n';
 			term.write(out);
+			break;
+		case 'about':
+			term.write('%+rThông tin%-r%n%nTrang web này được viết bằng JavaScript và thư viện termlib (http://www.masswerk.at/termlib/)%n%nCác bài học được tổng hợp dựa trên bài viết Doomsday Algorithm (http://rudy.ca/doomsday.html)%n%n(c) Bản quyền 2009 QAD (http://onetruebrace.com)%n%n');
 			break;
 	}
 	
@@ -177,7 +181,7 @@ function start_lesson(no) {
 function back_to_main() {
 	in_lesson = false;
 	term.clear();
-	term.statusLine('Gõ "lesson <n>" để học Bài <n>, "list" - xem danh sách bài học.');
+	term.statusLine('Gõ "lesson <n>" để học bài <n>, "list" - xem danh sách bài học.');
 	term.prompt();
 }
 
