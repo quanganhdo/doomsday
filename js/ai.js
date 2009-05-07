@@ -152,3 +152,21 @@ function doomsday_from_any_years() {
 		answer: day_of_week({day: dday, month: 2, year: year})
 	};
 }
+
+function day_of_week_from_any_dates() {
+	var year = random_number_between(RANGE.from, RANGE.to);
+	var month = random_number_between(1, 12);
+	var date = random_date({year: year, month: month});
+	
+	return {
+		question: sprintf('Ngày %s là thứ mấy?', human(date)),
+		answer: day_of_week(date)
+	};
+}
+
+function one_plus_one() {
+	return {
+		question: '1 + 1 = ?',
+		answer: 2
+	};
+}

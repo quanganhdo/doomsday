@@ -12,37 +12,47 @@ var LESSON_MATERIALS = [{
 	content: sprintf('%+rBÀI 1%-r%n%nTrong bài khởi động này, nhiệm vụ của bạn là tính nhẩm thứ trong tuần của một ngày, biết thứ của một ngày khác trong cùng tháng. Điều bạn cần làm là cộng/trừ bội số của 7 vào ngày cho trước, từ đó tìm ra thứ trong tuần của ngày cần tính.%n%nHãy thử tài với loạt câu hỏi được đưa ra bằng cách nhập số tương ứng với đáp án của bạn, 2 - thứ hai, 3 - thứ ba,... 7 - thứ bảy, 8 - chủ nhật. Để qua bài học này bạn cần %d điểm.%n%n', 3),
 	qa: day_of_week_from_2_dates_in_same_month,
 	tip: 'Nhập thứ dưới dạng số (2 - thứ hai, 8 - chủ nhật)',
-	score_to_pass: 3
+	score_to_pass: 5
 }, {
 	content: sprintf('%+rBÀI 2%-r%n%nĐiều đầu tiên bạn phải nhớ trong bài học này là: Trong một năm, ngày chúng ta quan tâm nhất là ngày cuối cùng của tháng 2 - %+iNgày tận thế (Doomsday)%-i. Với năm thường, đó là ngày 28; năm nhuận - ngày 29.%n%nLấy ví dụ, năm nay (%d) tháng 2 có %d ngày. Ngày cuối cùng của tháng là %s. Từ đó, bạn tính được thứ của tất cả các ngày khác trong tháng 2.%n%nĐiều thú vị hơn là, ngày 4/4, 6/6, 8/8, 10/10, 12/12 trong năm nay cũng là %s - trùng với %+iNgày tận thế%-i. Hơn thế, nó đúng với tất cả các năm. Thứ của các ngày 4/4, 6/6, 8/8, 10/10, 12/12 luôn trùng với thứ của %+iNgày tận thế%-i của năm đó.%n%nGiờ bạn hãy dùng kiến thức vừa học để áp dụng vào việc tìm thứ của các ngày trong tháng chẵn. Bạn cần %d điểm để qua bài 2.%n%n', current_year, current_doomsday, human_day_of_week({day: current_doomsday, month: 2, year: current_year}), human_day_of_week({day: current_doomsday, month: 2, year: current_year}), 5),
 	qa: day_of_week_from_date_in_even_months,
 	tip: '28(29)/2, 4/4, 6/6, 8/8, 10/10, 12/12 cùng thứ trong tuần',
 	score_to_pass: 5
 }, {
-	content: sprintf('%+rBÀI 3%-r%n%nTrong bài 3, chúng ta sẽ xét đến những tháng lẻ. Coi ngày cuối tháng 2 là ngày "mùng 0" của tháng 3 - ta có %+iNgày tận thế%-i thứ nhất: 7/3.%n%nNhớ %+iNgày tận thế%-i trong những tháng lẻ khác (5, 7, 9, 11) - trừ tháng 1 - cần bạn thuộc "câu thần chú": %+iTôi làm việc từ 9 đến 5 ở 7-11 (I work 9-5 at the 7-11).%-i 9h đến 5h là giờ đi làm ở một số nước, và 7-Eleven là tên một chuỗi cửa hàng có tiếng trên thế giới. Với "câu thần chú" này, bạn biết thêm 4 %+iNgày tận thế%-i: 5/9, 9/5, 7/11, 11/7.%n%nGiờ đến tháng 1. Nếu năm đang xét là năm thường,  %+iNgày tận thế%-i là 3/1, nếu năm nhuận (chia hết cho 4) - 4/1.%n%nKhá rắc rối và khó nhớ, tuy nhiên một khi nắm được bạn sẽ thấy mọi chuyện thật đơn giản. Hãy cố gắng qua bài này với %d điểm.%n%n', 7),
+	content: sprintf('%+rBÀI 3%-r%n%nTrong bài 3, chúng ta sẽ xét đến những tháng lẻ. Coi ngày cuối tháng 2 là ngày "mùng 0" của tháng 3 - ta có %+iNgày tận thế%-i thứ nhất: 7/3.%n%nNhớ %+iNgày tận thế%-i trong những tháng lẻ khác (5, 7, 9, 11) - trừ tháng 1 - cần bạn thuộc "câu thần chú": %+iTôi làm việc từ 9 đến 5 ở 7-11 (I work 9-5 at the 7-11).%-i 9h đến 5h là giờ đi làm ở một số nước, và 7-Eleven là tên một chuỗi cửa hàng có tiếng trên thế giới. Với "câu thần chú" này, bạn biết thêm 4 %+iNgày tận thế%-i: 5/9, 9/5, 7/11, 11/7.%n%nGiờ đến tháng 1. Nếu năm đang xét là năm thường,  %+iNgày tận thế%-i là 3/1, nếu năm nhuận (chia hết cho 4) - 4/1.%n%nKhá rắc rối và khó nhớ, tuy nhiên một khi nắm được bạn sẽ thấy mọi chuyện thật đơn giản. Hãy cố gắng qua bài này với %d điểm.%n%n', 5),
 	qa: day_of_week_from_date_in_odd_months,
 	tip: '3(4)/1, 0(7)/3, 5/9, 9/5, 7/11, 11/7 cùng thứ trong tuần',
-	score_to_pass: 7
+	score_to_pass: 5
 }, {
-	content: sprintf('%+rBÀI 4%-r%%n%nĐây là bài ôn tập, yêu cầu bạn sử dụng kiến thức của 2 bài trước. Mục tiêu của bạn là %d điểm.%n%n', 10),
+	content: sprintf('%+rBÀI 4%-r%%n%nĐây là bài ôn tập, yêu cầu bạn sử dụng kiến thức của 2 bài trước. Mục tiêu của bạn là %d điểm.%n%n', 7),
 	qa: day_of_week_from_date_in_any_months,
 	tip: '3(4)/1, 0(7)/3, 5/9, 9/5, 7/11, 11/7, 28(29)/2, 4/4',
-	score_to_pass: 10
-}, {
-	content: sprintf('%+rBÀI 5%-r%n%nẮt hẳn sau 4 bài học vừa qua, bạn rút ra kết luận: Biết thứ trong tuần của %+iNgày tận thế%-i trong một năm sẽ giúp ta nhẩm được thứ của một ngày bất kỳ trong năm đó. %+iNgày tận thế%-i năm nay là %s, còn các năm khác thì sao?%n%nXét đến thế kỷ 20 với mốc là năm 1900 - %+iNgày tận thế%-i là thứ tư. Để biết %+iNgày tận thế%-i của các năm 19YY khác (ví dụ 1929) rơi vào hôm nào, bạn làm như sau:%n%n- Xét số tạo bởi 2 chữ số cuối của năm (29)%n- Đem số đó chia 12, lấy thương (29/12=2) và số dư (5)%n- Đem số dư chia 4, lấy thương (5/4=1)%n- Cộng tất cả lại (2+5+1=8)%n- Bỏ bội của 7 khỏi kết quả(8-7=1)%n- Cuối cùng đem kết quả cộng với 4 (tương ứng với thứ tư) => Đáp áp là thứ năm%n%nỞ đây coi 2 - thứ hai, 3 - thứ 3,... 1 - chủ nhật.%n%nRắc rối nhỉ? Thử xem nhé. %d điểm và bạn qua được bài này.%n%n', human_day_of_week(current_doomsday), score_to_pass),
-	qa: doomsday_from_any_years_in_20th_century,
-	tip: 'Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4 + 4',
 	score_to_pass: 7
 }, {
-	content: sprintf('%+rBÀI 6%-r%%n%nThêm một bài ôn tập nữa, áp dụng tất cả những gì bạn đã học để tìm thứ trong tuần của một ngày bất kỳ trong thế kỷ 21. Biết %+iNgày tận thế%-i của năm 2000 là thứ 3. Đây là mốc để cộng với kết quả thu được sau phép toán: Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4.%n%nBạn qua bài này với %d điểm.%n%n', 5),
+	content: sprintf('%+rBÀI 5%-r%n%nẮt hẳn sau 4 bài học vừa qua, bạn rút ra kết luận: Biết thứ trong tuần của %+iNgày tận thế%-i trong một năm sẽ giúp ta nhẩm được thứ của một ngày bất kỳ trong năm đó. %+iNgày tận thế%-i năm nay là %s, còn các năm khác thì sao?%n%nXét đến thế kỷ 20 với mốc là năm 1900 - %+iNgày tận thế%-i là thứ tư. Để biết %+iNgày tận thế%-i của các năm 19YY khác (ví dụ 1929) rơi vào hôm nào, bạn làm như sau:%n%n- Xét số tạo bởi 2 chữ số cuối của năm (29)%n- Đem số đó chia 12, lấy thương (29/12=2) và số dư (5)%n- Đem số dư chia 4, lấy thương (5/4=1)%n- Cộng tất cả lại (2+5+1=8)%n- Bỏ bội của 7 khỏi kết quả(8-7=1)%n- Cuối cùng đem kết quả cộng với 4 (tương ứng với thứ tư) => Đáp áp là thứ năm%n%nỞ đây coi 2 - thứ hai, 3 - thứ 3,... 1 - chủ nhật.%n%nRắc rối nhỉ? Thử xem nhé. %d điểm và bạn qua được bài này.%n%n', human_day_of_week(current_doomsday), 5),
+	qa: doomsday_from_any_years_in_20th_century,
+	tip: 'Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4 + 4',
+	score_to_pass: 5
+}, {
+	content: sprintf('%+rBÀI 6%-r%%n%nThêm một bài ôn tập nữa, áp dụng tất cả những gì bạn đã học để tìm thứ trong tuần của một ngày bất kỳ trong thế kỷ 21. Biết %+iNgày tận thế%-i của năm 2000 là thứ 3. Đây là mốc để cộng với kết quả thu được sau phép toán: Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4.%n%nBạn qua bài này với %d điểm.%n%n', 7),
 	qa: day_of_week_from_date_in_21st_century,
 	tip: 'Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4 + 3',
-	score_to_pass: 5
+	score_to_pass: 7
 }, {
 	content: sprintf('%+rBÀI 7%-r%%n%nTrong Bài 7 bạn sẽ học cách tính %+iNgày tận thế%-i của một năm bất kỳ. Nhiệm vụ của bạn là xác định %+iNgày tận thế%-i của năm đầu thế kỷ đó, từ đó suy ra %+iNgày tận thế%-i của năm cần tìm.%n%nBạn cần nhớ:%n%n-%+iNgày tận thế%-i của năm 2100 là chủ nhật (Sun)%n-%+iNgày tận thế%-i của năm 2000 là thứ ba (Tue)%n-%+iNgày tận thế%-i của năm 1900 là thứ tư (Wed)%n-%+iNgày tận thế%-i của năm 1800 là thứ sáu (Fri)%n%nGhi nhớ bằng cách ghép các thứ lại thành câu: %+iSun-Tue-Wed-Fri%-i (Son to wed Friday - Con trai sẽ cưới vợ vào thứ sáu)%n%nChu kỳ này lặp mỗi 4 năm, nghĩa là %+iNgày tận thế%-i của 1700, 1600, 1500, 1400 lần lượt là chủ nhật, thứ ba, thứ tư, thứ sáu. Hãy thử áp dụng nhé - bạn cần %d điểm.%n%n', 5),
 	qa: doomsday_from_any_years,
 	tip: '2100-2000-1900-1800: Sun-Tue-Wed-Fri',
 	score_to_pass: 5
+}, {
+	content: sprintf('%+rBÀI 8%-r%n%nBài 8 là bài ôn tập và cũng là bài cuối cùng. Bạn sẽ xác định %+ithứ trong tuần của một ngày bất kỳ%-i. Mục tiêu của bạn là %d điểm.%n%n', score_to_pass),
+	qa: day_of_week_from_any_dates,
+	tip: 'Sử dụng tất cả kiến thức bạn từng học',
+	score_to_pass: 7
+}, {
+	content: sprintf('%+rBÀI 8%-r%n%nChỉ có 8 bài học thôi bạn ạ.%n%n'),
+	qa: one_plus_one,
+	tip: 'Tắt máy đi chơi thôi',
+	score_to_pass: 1
 }];
 
 function $(id) {
@@ -80,7 +90,7 @@ function termInitHandler() {
 		]
 	);
 	this.statusLine('', 8, 2);
-	this.statusLine('Bạn có thể chọn bài mình muốn học bằng lệnh "lesson <n>" (n - số thứ tự).');
+	this.statusLine('Gõ "lesson <n>" để học Bài <n>, "list" - xem danh sách bài học.');
 	this.maxLines -= 2;
 	this.prompt();
 }
@@ -137,7 +147,7 @@ function startLesson(no) {
 function back_to_main() {
 	in_lesson = false;
 	term.clear();
-	term.statusLine('Bạn có thể chọn bài mình muốn học bằng lệnh "lesson <n>" (n - số thứ tự)');
+	term.statusLine('Gõ "lesson <n>" để học Bài <n>, "list" - xem danh sách bài học.');
 	term.prompt();
 }
 
