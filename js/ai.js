@@ -1,0 +1,65 @@
+var RANGE = {from: 1500, to: 2500};
+var DAY = ['thứ hai', 'thứ ba', 'thứ tư', 'thứ năm', 'thứ sáu', 'thứ bảy', 'chủ nhật'];
+
+// http://en.wikipedia.org/wiki/Zeller%27s_congruence
+function day_of_week(date) {
+	var q, k, j, h;
+	var day = date.day || 27;
+	var month = date.month || 10;
+	var year = date.year || 1989;
+	
+	q = day;
+	m = (month >= 3) ? month : month + 12;
+	year = (month >= 3) ? year : year - 1;
+	k = year % 100;
+	j = Math.floor(year / 100);
+	
+	h = (q + Math.floor((m + 1) * 2.6) + k + Math.floor(k / 4) + Math.floor(j / 4) + 5 * j) % 7;
+	return ((h + 5) % 7) + 2; // [2 -> Monday, 8 -> Sunday]
+}
+
+function human_day_of_week(date) {
+	var dow = day_of_week(date);
+	return DAY[dow] - 2;
+}
+
+function leap_year(year) {
+    return (year % 400 == 0) || (year % 4 == 0) && (year % 100 != 0);
+}
+
+
+function random_date(options) {
+	var max = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	
+	var from = options.from || RANGE.from;
+	var to = options.to || RANGE.to;
+	var year = options.year || random_number_between(from, to);
+	max[1] = leap_year(year) ? 29 : 28;
+	var month = options.month || random_number_between(1, 12);
+	var day = random_number_between(1, max[month - 1]);
+	
+	return {
+		day: day,
+		month: month,
+		year: year
+	};
+}
+
+function random_number_between(small, large) {
+	return Math.floor(Math.random() * (large - small + 1)) + small;
+}
+
+function human(date) {
+	return sprintf('%d/%d/%d', date.day, date.month, date.year);
+}
+
+function day_of_week_from_2_days_in_same_month() {
+	var year = random_number_between(RANGE.from, RANGE.to);
+	var month = random_number_between(1, 12);
+	var date1 = random_date({year: year, month: month});
+	var date2 = random_date({year: year, month: month});
+	return {
+		question: sprintf('Nếu ngày %s là %s thì ngày %s là thứ mấy?', human(date1), human_day_of_week(date1), human(date2)),
+		answer: day_of_week(date2)
+	};
+}
