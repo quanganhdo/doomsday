@@ -14,7 +14,7 @@ var LESSON_MATERIALS = [{
 	tip: 'Nhập thứ dưới dạng số (2 - thứ hai, 8 - chủ nhật)',
 	score_to_pass: 5
 }, {
-	content: sprintf('%+rBÀI 2%-r%n%nĐiều đầu tiên bạn phải nhớ trong bài học này là: Trong một năm, ngày chúng ta quan tâm nhất là ngày cuối cùng của tháng 2 - %+iNgày tận thế (Doomsday)%-i. Với năm thường, đó là ngày 28; năm nhuận - ngày 29.%n%nLấy ví dụ, năm nay (%d) tháng 2 có %d ngày. Ngày cuối cùng của tháng là %s. Từ đó, bạn tính được thứ của tất cả các ngày khác trong tháng 2.%n%nĐiều thú vị hơn là, ngày 4/4, 6/6, 8/8, 10/10, 12/12 trong năm nay cũng là %s - trùng với %+iNgày tận thế%-i. Hơn thế, nó đúng với tất cả các năm. Thứ của các ngày 4/4, 6/6, 8/8, 10/10, 12/12 luôn trùng với thứ của %+iNgày tận thế%-i của năm đó.%n%nGiờ bạn hãy dùng kiến thức vừa học để áp dụng vào việc tìm thứ của các ngày trong tháng chẵn. Bạn cần %d điểm để qua bài 2.%n%n', current_year, current_doomsday, human_day_of_week({day: current_doomsday, month: 2, year: current_year}), human_day_of_week({day: current_doomsday, month: 2, year: current_year}), 5),
+	content: sprintf('%+rBÀI 2%-r%n%nĐiều đầu tiên bạn phải nhớ trong bài học này là: Trong một năm, ngày chúng ta quan tâm nhất là ngày cuối cùng của tháng 2 - "%+iNgày tận thế (Doomsday)%-i". Với năm thường, đó là ngày 28; năm nhuận - ngày 29.%n%nLấy ví dụ, năm nay (%d) tháng 2 có %d ngày. Ngày cuối cùng của tháng là %s. Từ đó, bạn tính được thứ của tất cả các ngày khác trong tháng 2.%n%nĐiều thú vị hơn là, ngày 4/4, 6/6, 8/8, 10/10, 12/12 trong năm nay cũng là %s - trùng với %+iNgày tận thế%-i. Hơn thế, nó đúng với tất cả các năm. Thứ của các ngày 4/4, 6/6, 8/8, 10/10, 12/12 luôn trùng với thứ của %+iNgày tận thế%-i của năm đó.%n%nGiờ bạn hãy dùng kiến thức vừa học để áp dụng vào việc tìm thứ của các ngày trong tháng chẵn. Bạn cần %d điểm để qua bài 2.%n%n', current_year, current_doomsday, human_day_of_week({day: current_doomsday, month: 2, year: current_year}), human_day_of_week({day: current_doomsday, month: 2, year: current_year}), 5),
 	qa: day_of_week_from_date_in_even_months,
 	tip: '28(29)/2, 4/4, 6/6, 8/8, 10/10, 12/12 cùng thứ trong tuần',
 	score_to_pass: 5
@@ -39,7 +39,7 @@ var LESSON_MATERIALS = [{
 	tip: 'Thương + Số dư khi chia 12 + Thương khi lấy số dư chia 4 + 3',
 	score_to_pass: 7
 }, {
-	content: sprintf('%+rBÀI 7%-r%%n%nTrong Bài 7 bạn sẽ học cách tính %+iNgày tận thế%-i của một năm bất kỳ. Nhiệm vụ của bạn là xác định %+iNgày tận thế%-i của năm đầu thế kỷ đó, từ đó suy ra %+iNgày tận thế%-i của năm cần tìm.%n%nBạn cần nhớ:%n%n-%+iNgày tận thế%-i của năm 2100 là chủ nhật (Sun)%n-%+iNgày tận thế%-i của năm 2000 là thứ ba (Tue)%n-%+iNgày tận thế%-i của năm 1900 là thứ tư (Wed)%n-%+iNgày tận thế%-i của năm 1800 là thứ sáu (Fri)%n%nGhi nhớ bằng cách ghép các thứ lại thành câu: %+iSun-Tue-Wed-Fri%-i (Son to wed Friday - Con trai sẽ cưới vợ vào thứ sáu)%n%nChu kỳ này lặp mỗi 4 năm, nghĩa là %+iNgày tận thế%-i của 1700, 1600, 1500, 1400 lần lượt là chủ nhật, thứ ba, thứ tư, thứ sáu. Hãy thử áp dụng nhé - bạn cần %d điểm.%n%n', 5),
+	content: sprintf('%+rBÀI 7%-r%%n%nTrong Bài 7 bạn sẽ học cách tính %+iNgày tận thế%-i của một năm bất kỳ. Nhiệm vụ của bạn là xác định %+iNgày tận thế%-i của năm đầu thế kỷ đó, từ đó suy ra %+iNgày tận thế%-i của năm cần tìm.%n%nBạn cần nhớ:%n%n- %+iNgày tận thế%-i của năm 2100 là chủ nhật (Sun)%n- %+iNgày tận thế%-i của năm 2000 là thứ ba (Tue)%n- %+iNgày tận thế%-i của năm 1900 là thứ tư (Wed)%n- %+iNgày tận thế%-i của năm 1800 là thứ sáu (Fri)%n%nGhi nhớ bằng cách ghép các thứ lại thành câu: %+iSun-Tue-Wed-Fri%-i (Son to wed Friday - Con trai sẽ cưới vợ vào thứ sáu)%n%nChu kỳ này lặp mỗi 4 năm, nghĩa là %+iNgày tận thế%-i của 1700, 1600, 1500, 1400 lần lượt là chủ nhật, thứ ba, thứ tư, thứ sáu. Hãy thử áp dụng nhé - bạn cần %d điểm.%n%n', 5),
 	qa: doomsday_from_any_years,
 	tip: '2100-2000-1900-1800: Sun-Tue-Wed-Fri',
 	score_to_pass: 5
@@ -98,18 +98,17 @@ function termInitHandler() {
 function termHandler() {
 	var line = this.lineBuffer;
 	this.newLine();
-	if (line == 'help') {
-		this.write('Lorem ipsum dolor sit amet');
-		this.prompt();
-	} else if ((line == 'exit' || line == 'quit' == line == 'q') && !in_lesson) {
+	if ((line == 'exit' || line == 'quit' == line == 'q') && !in_lesson) {
 		this.close();
 		return;
 	} else if (line == 'clear') {
 		this.clear();
 		this.prompt();
+	} else if (line.match(/^(intro|help)$/)) {
+		show_page(line);
 	} else if (line.match(/^lesson [0-9]+$/)) {
 		var no = line.match(/^lesson ([0-9]+)$/)[1] || 0;
-		startLesson(no);
+		start_lesson(no);
 	} else if (in_lesson) {
 		if (score == score_to_pass) {
 			back_to_main();
@@ -124,7 +123,22 @@ function termHandler() {
 	}
 }
 
-function startLesson(no) {
+function show_page(name) {
+	term.clear();
+	
+	switch (name) {
+		case 'intro':
+			term.write('%+rGiới thiệu%-r%n%nĐã bao nhiêu lần bạn đặt câu hỏi: Ngày mm/dd/yyyy là thứ mấy? Chắc chắn không dưới 10 lần, thậm chí là 100 lần. Vậy bạn có muốn tự mình trả lời câu hỏi quen thuộc đó bằng cách tính nhẩm, thay vì sử dụng máy tính/điện thoại/lịch? Cách tính nghe qua có vẻ phức tạp, nhưng khi đã quen bạn sẽ thấy rất dễ dàng.%n%nCác bài học, cũng như bài tập, được trình bày trong giao diện dòng lệnh này. Bạn có thể gõ "help" để xem danh sách các lệnh.%n%n');
+			break;
+		case 'help':
+			term.write(sprintf('%+rDanh sách lệnh%-r%n%n- help: Hiển thị màn hình này%n- quit: Thoát khỏi terminal%n- clear: Xóa màn hình%n- intro: Giới thiệu%n- lesson <n>: Bắt đầu bài học <n> (n từ 1 - %d)%n- list: Danh sách các bài học%n%n', LESSON_MATERIALS.length - 1));
+			break;
+	}
+	
+	term.prompt();
+}
+
+function start_lesson(no) {
 	if (no > LESSON_MATERIALS.length) {
 		term.write(sprintf('Bài học không tồn tại. Bạn có thể gõ "list" để xem danh sách các bài học.', no));
 		term.prompt();
@@ -141,7 +155,7 @@ function startLesson(no) {
 	term.write(LESSON_MATERIALS[current_lesson].content);
 	term.statusLine('Gõ "quit" - thoát khỏi bài học, "lesson" - xem lại bài học');
 	
-	nextQuestion();
+	next_question();
 }
 
 function back_to_main() {
@@ -151,7 +165,7 @@ function back_to_main() {
 	term.prompt();
 }
 
-function nextQuestion() {
+function next_question() {
 	var qa = LESSON_MATERIALS[current_lesson].qa.call();
 	term.write(qa.question);
 	expected_answer = qa.answer;
@@ -165,7 +179,7 @@ function check_answer(line) {
 	} else if (line == 'lesson') {
 		term.clear();
 		term.write(LESSON_MATERIALS[current_lesson].content);
-		return nextQuestion();
+		return next_question();
 	}
 	
 	answer = parseInt(line, 10);
@@ -181,7 +195,7 @@ function check_answer(line) {
 	term.statusLine(sprintf('Điểm: %d/%d - %s', score, score_to_pass, LESSON_MATERIALS[current_lesson].tip));
 	
 	if (score < score_to_pass) {
-		nextQuestion();
+		next_question();
 	} else {
 		term.write(sprintf('Bạn đã hoàn thành xuất sắc Bài %d. Gõ Enter để thoát.', current_lesson + 1));
 		term.statusLine(sprintf('Điểm: %d/%d - Gõ Enter để thoát bài học', score, score_to_pass));
